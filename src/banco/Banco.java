@@ -24,6 +24,9 @@ public class Banco {
             if (resp == 1) {
                 Telas.cadastro();
             }
+            else if (resp == 2) {
+                Telas.verUsuarios();
+            }
         }
                 
     }

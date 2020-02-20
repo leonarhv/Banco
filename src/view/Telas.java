@@ -6,6 +6,8 @@
 package view;
 
 import database.dao.UsuarioDao;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import users.Usuario;
 
@@ -16,9 +18,8 @@ import users.Usuario;
 public class Telas {
     public static void telaPrincipal() {
         System.out.println("--------------------------------");
-        System.out.println("Bem vindo ao banco XPTO");
+        System.out.println("Banco XPTO");
         System.out.println("--------------------------------");
-        System.out.println("\n\n\n");
         System.out.println("Selecione uma opção:");
         System.out.println("1 - Cadastrar usuário");
         System.out.println("2 - Lista de usuários do banco");
@@ -42,5 +43,20 @@ public class Telas {
         usuario.setAgencia(leia.nextInt());
         
         dao.insere(usuario);
+    }
+    
+    public static void verUsuarios() {
+        UsuarioDao dao = new UsuarioDao();
+        List<Usuario> usuarios = dao.getLista();
+        
+        System.out.println("----------------------------------");
+        System.out.println("Lista de Usuários cadastrados:");
+        for (Usuario usuario : usuarios) {
+            System.out.println("----------------------------------");
+            System.out.println("ID: " + usuario.getId());
+            System.out.println("Nome: " + usuario.getNome());
+            System.out.println("Conta: " + usuario.getConta());
+            System.out.println("Agência: " + usuario.getAgencia());
+        }
     }
 }

@@ -54,9 +54,11 @@ public class UsuarioDao {
             
             while (rs.next()) {                
                 Usuario usuario = new Usuario();
+                usuario.setId(rs.getLong("id"));
                 usuario.setNome(rs.getString("nome"));
                 usuario.setAgencia(rs.getInt("agencia"));
                 usuario.setConta(rs.getString("conta"));
+                usuarios.add(usuario);
             }
             
             rs.close();
