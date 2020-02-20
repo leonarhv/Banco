@@ -5,11 +5,8 @@
  */
 package banco;
 
-import database.ConnectionFactory;
-import database.dao.UsuarioDao;
-import java.sql.Connection;
-import java.sql.SQLException;
-import users.Usuario;
+import java.util.Scanner;
+import view.Telas;
 
 /**
  *
@@ -17,17 +14,18 @@ import users.Usuario;
  */
 public class Banco {
 
-    public static void main(String[] args) throws SQLException {
-        view.Telas.telaPrincipal();
+    public static void main(String[] args) {
+        int resp = 0;
+        Scanner leia = new Scanner(System.in);
         
-        Usuario bob = new Usuario();
-        bob.setNome("Bob");
-        bob.setAgencia(2);
-        bob.setConta("1234-05");
-        
-        UsuarioDao dao = new UsuarioDao();
-        dao.insere(bob);
-        
+        while (resp != 3) {
+            Telas.telaPrincipal();
+            resp = leia.nextInt();
+            if (resp == 1) {
+                Telas.cadastro();
+            }
+        }
+                
     }
     
 }
